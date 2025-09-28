@@ -6,7 +6,7 @@ class Solution {
             if( nums[i] < nums[i-1] + nums[i-2]) {  // check for largest side is greater than other 2 or not
                 peri = nums[i] + nums[i-1] + nums[i-2];  // if yes then cal perimeter
             }
-            maxPeri = Math.max( maxPeri, peri );
+            maxPeri = Math.max( maxPeri, peri );    // store largest perimeter
         }
 
         return maxPeri; // return ans i.e largest perimeter if found else 0
