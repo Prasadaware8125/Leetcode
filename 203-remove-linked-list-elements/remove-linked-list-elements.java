@@ -1,31 +1,31 @@
-/**
- * Definition for singly-linked list.
- * public class ListNode {
- *     int val;
- *     ListNode next;
- *     ListNode() {}
- *     ListNode(int val) { this.val = val; }
- *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
- * }
- */
 class Solution {
     public ListNode removeElements(ListNode head, int val) {
-        // Crate a dummy node that points to the head
-        // This hadles edge cases
-        ListNode dummy = new ListNode(-1);
-        dummy.next = head;
+        // Step 1: Handle the head of the list
+        // While the list is not empty AND the head needs to be removed,
+        // move the head pointer forward.
+        while (head != null && head.val == val) {
+            head = head.next;
+        }
 
-        // pointer to traverse 
-        ListNode current = dummy;
+        // Check if the list became empty after removing heads
+        if (head == null) {
+            return null;
+        }
 
-        while( current.next != null ) {
-            if( current.next.val == val ) {
+        // Step 2: Handle the rest of the list
+        // We now know head.val != val, so we can start checking from head.
+        ListNode current = head;
+        
+        while (current.next != null) {
+            if (current.next.val == val) {
+                // Skip the node
                 current.next = current.next.next;
             } else {
+                // Move to next node only if we didn't delete
                 current = current.next;
             }
         }
-        // return dummy.next (the new head of the modified list)
-        return dummy.next;
+        
+        return head;
     }
 }
