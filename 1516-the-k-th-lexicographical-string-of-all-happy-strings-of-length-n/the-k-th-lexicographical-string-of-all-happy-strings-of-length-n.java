@@ -1,8 +1,13 @@
 class Solution {
-
-    public void solve(int n, StringBuilder curr, ArrayList<String> result) {
+    String res = "";
+    int count = 0;
+    // Recursion and backtracking
+    public void solve(int n, StringBuilder curr, int k) {
         if( curr.length() == n ) {
-            result.add(curr.toString());
+            count++;
+            if( count == k ) {
+                res = curr.toString();
+            }
             return;
         }
         for( char ch = 'a' ; ch <= 'c' ; ch++ ) {
@@ -14,7 +19,7 @@ class Solution {
             curr.append(ch);
 
             // Explore
-            solve(n, curr, result);
+            solve(n, curr, k);
 
             // Undo
             curr.deleteCharAt(curr.length() - 1);
@@ -22,14 +27,8 @@ class Solution {
     }
     public String getHappyString(int n, int k) {
         StringBuilder curr = new StringBuilder("");
-        ArrayList<String> result = new ArrayList<>();
+        solve(n, curr, k);
 
-        solve(n, curr, result);
-
-        if( result.size() < k ) {
-            return "";
-        }
-
-        return result.get(k-1);
+        return res;
     }
 }
