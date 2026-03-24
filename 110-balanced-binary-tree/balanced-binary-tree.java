@@ -14,9 +14,9 @@
  * }
  */
 class Solution {
-    static boolean balanced = true;
+    static boolean balanced;
     public boolean isBalanced(TreeNode root) {
-        balanced = true;        
+        balanced = true;
         height(root);
         return balanced;
     }
@@ -25,12 +25,14 @@ class Solution {
         if( root == null ) {
             return 0;
         }
-        int lh = height(root.left);
-        int rh = height(root.right);
 
-        if( Math.abs( lh - rh ) > 1 ) {
+        int ld = height(root.left);
+        int rd = height(root.right);
+
+        if( Math.abs(ld - rd ) > 1) {
             balanced = false;
         }
-        return Math.max( lh, rh ) + 1;
+
+        return Math.max(ld, rd)+1;
     }
 }
