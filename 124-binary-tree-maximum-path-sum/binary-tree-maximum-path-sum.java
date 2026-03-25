@@ -23,10 +23,10 @@ class Solution {
 
         if( leftSum < 0 ) leftSum = 0;
         if( rightSum < 0 ) rightSum = 0;
-        
-        diameterSum = Math.max(diameterSum, leftSum + rightSum + root.val);
 
-        return Math.max(leftSum, rightSum) + root.val;
+        diameterSum = Math.max(diameterSum, leftSum + rightSum + root.val );
+
+        return Math.max(leftSum, rightSum ) + root.val;
     }
     public int maxPathSum(TreeNode root) {
         dfs(root);
