@@ -15,20 +15,13 @@
  */
 class Solution {
     public TreeNode removeLeafNodes(TreeNode root, int target) {
-        if( root == null ) {
-            return null;
-        }
+        if( root == null ) return null;
 
-        // Post order traversing
         root.left = removeLeafNodes(root.left, target);
         root.right = removeLeafNodes(root.right, target);
 
-        // checke leaf node
-        if( root.left == null && root.right == null ) {
-            // if leaf node = target then make it null
-            if( root.val == target ) {
-                return null;
-            }
+        if( root.left == null && root.right == null && root.val == target ) {
+            return null;
         }
 
         return root;
