@@ -24,6 +24,13 @@ class Solution {
     public TreeNode createBST(ArrayList<Integer> arr, int st, int end) {
         if( st > end ) return null;
 
+        if( st == end ) {     // Leaf Node
+            TreeNode leaf = new TreeNode(arr.get(st));
+            leaf.left = null;
+            leaf.right = null;
+            return leaf;
+        }   
+
         int mid = ( st + end ) / 2;
 
         TreeNode root = new TreeNode(arr.get(mid));
