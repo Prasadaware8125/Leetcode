@@ -1,12 +1,45 @@
 class Solution {
+    // Auxillary function
+    private void heapify(int[] nums, int i, int size){
+        int left = 2 * i + 1;
+        int right = 2 * i + 2;
+        int maxIdx = i;
+
+        if( left < size && nums[left] > nums[maxIdx] ) {
+            maxIdx = left;
+        }
+
+        if( right < size && nums[right] > nums[maxIdx] ) {
+            maxIdx = right;
+        }
+
+        if( maxIdx != i ) {
+            int temp = nums[i];
+            nums[i] = nums[maxIdx];
+            nums[maxIdx] = temp;
+
+            heapify(nums, maxIdx, size);
+        }
+    }
+    public void heapSort(int[] nums) {
+        int n = nums.length;
+        // Build maxHeap
+        for( int i = n / 2 ; i >= 0 ; i-- ) {
+            heapify(nums, i, n);
+        }
+
+        // Push largest element at last
+        // Sorting
+        for( int i = n-1 ; i >= 0 ; i-- ) {
+            int temp = nums[0];
+            nums[0] = nums[i];
+            nums[i] = temp;
+
+            heapify(nums, 0, i);
+        }
+    }
     public int[] sortArray(int[] nums) {
-        PriorityQueue<Integer> pq = new PriorityQueue<>();
-        for( int i = 0 ; i < nums.length ; i++ ) {
-            pq.add(nums[i]);
-        }
-        for( int i = 0 ; i < nums.length ; i++ ) {
-            nums[i] = pq.remove();
-        }
+        heapSort(nums);
         return nums;
     }
 }
