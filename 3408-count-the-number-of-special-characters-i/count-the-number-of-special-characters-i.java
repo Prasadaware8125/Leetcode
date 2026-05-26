@@ -5,7 +5,7 @@ class Solution {
         for( int i = 0 ; i < word.length() ; i++ ) {
             char curr = word.charAt(i);
             if( map.containsKey(curr) ) {
-                map.put(curr, map.get(curr)+1);
+                continue;
             }else if( Character.isLowerCase(curr) ) {
                 map.put(curr, 1);
             }
