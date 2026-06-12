@@ -20,8 +20,9 @@ class Solution {
         if( l == null && r != null ) return false;
 
         if( l.val != r.val ) return false;
-        boolean left = checkSymmetric(l.left, r.right); 
-        boolean right = checkSymmetric(l.right, r.left); 
+
+        boolean left = checkSymmetric(l.left, r.right);
+        boolean right = checkSymmetric(l.right, r.left);
 
         return left && right;
     }
