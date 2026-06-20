@@ -1,16 +1,14 @@
 class Solution {
     public int search(int[] nums, int target) {
-        int start = 0, end = nums.length-1;
-        while( start <= end ) {
-            int mid = (start+end)/2;
-            if( nums[mid] == target ) {
-                return mid;
-            } else if( nums[mid] < target ) {
-                start = mid + 1;
-            } else {
-                end = mid - 1;
-            }
+        int l = 0, r = nums.length-1;
+
+        while( l <= r ) {
+            int mid = (l+r)/2;
+            if( nums[mid] == target ) return mid;
+            else if( nums[mid] < target ) l = mid+1;
+            else r = mid-1;
         }
+
         return -1;
     }
 }
