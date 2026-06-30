@@ -22,7 +22,7 @@ class Solution {
         while( !q.isEmpty() ) {
             Info curr = q.remove();
             if( curr.stops > k ) {
-                break;
+                continue;
             }
 
             for( int i = 0 ; i < flights.length ; i++ ) {
