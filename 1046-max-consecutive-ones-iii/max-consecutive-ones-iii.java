@@ -6,10 +6,9 @@ class Solution {
         int l = 0, r = 0;
         while (r < n) {
             if( arr[r] == 0 ) zeros++;
-                while (zeros > k) {
-                if( arr[l] == 0 ) {
-                    zeros--;
-                }
+            
+            if( zeros > k ) {
+                if( arr[l] == 0 ) zeros--;
                 l++;
             }
             if( zeros <= k ) {
